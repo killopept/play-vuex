@@ -4,5 +4,6 @@
 
 // export default state
 export const state = {
-    count: 0
+    count: 0,
+    test: 'hello Vuex,',
 }

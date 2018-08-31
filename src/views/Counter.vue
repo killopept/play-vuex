@@ -1,7 +1,7 @@
 <template>
   <div class = "demoVuex">
     <h1>vuex counter example</h1>
-    <div>Clicked: {{$store.state.count}} times, count is {{ evenOrOdd }}</div>
+    <div>Clicked: {{$store.state.count}} times, count is {{ evenOrOdd }},{{counted}}</div>
     <br>
     <button @click = "increment">+</button>
     <button @click = "decrement">-</button>
@@ -14,14 +14,20 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Counter',
-  computed: mapGetters([ // 状态
-    'evenOrOdd'
-  ]),
+  computed: {
+    ...mapGetters([ // 状态
+      'evenOrOdd'
+    ]),
+    counted(){
+      var it = this.$store.state.test + new Date().getTime()
+      return it
+    }
+  },
   methods: mapActions([ // 方法
     'increment',
     'decrement',
     'incrementIfOdd',
-    'incrementAsync'
+    'incrementAsync',
   ])
 }
 </script>
